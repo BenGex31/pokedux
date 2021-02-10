@@ -1,3 +1,3 @@
 export default {
-    click: 100
+    click: 0
 };
