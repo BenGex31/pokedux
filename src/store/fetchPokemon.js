@@ -1,5 +1,5 @@
 import { fetchPokemonSuccess } from "./action";
-const numberOfPokemon = 10
+const numberOfPokemon = 151
 
 const urls = []
 
