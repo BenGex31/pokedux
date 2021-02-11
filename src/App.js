@@ -45,8 +45,7 @@ const mapDispatchToProps = dispatch => {
     fetchPokemons: () => dispatch(fetchPokemons()),
     handleClick: () => dispatch({ type: CLICK }),
     showPokemon: pokemons => dispatch(showPokemonAction(pokemons)),
-    catchPokemon: pokemons => dispatch(catchPokemonAction())
-
+    catchPokemon: () => dispatch(catchPokemonAction())
   }
 }
 
