@@ -4,7 +4,7 @@ import "./GameBoy.css";
 
 import Screen from "./Screen";
 
-const GameBoy = ({ showPokemon }) => {
+const GameBoy = ({ showPokemon, catchPokemon }) => {
   return (
     <div>
       <div className="gameboy">
@@ -52,7 +52,7 @@ const GameBoy = ({ showPokemon }) => {
               </div>
             </div>
 
-            <div className="ab-button a">
+            <div className="ab-button a" onClick={() => catchPokemon()}>
               <span className="button-text-height">A</span>
             </div>
 
@@ -61,10 +61,10 @@ const GameBoy = ({ showPokemon }) => {
             </div>
           </div>
           <div className="bottom-box">
-            <div className="pill-button button-select">
+            <div className="pill-button button-select" onClick={() => showPokemon()}>
               <label className="select">SELECT</label>
             </div>
-            <div className="pill-button button-start">
+            <div className="pill-button button-start" onClick={() => showPokemon()}>
               <label className="start">START</label>
             </div>
             <div className="speaker">
