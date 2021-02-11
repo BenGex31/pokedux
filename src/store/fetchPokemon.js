@@ -1,5 +1,5 @@
-import { fetchPokemonSuccess } from "./action";
-const numberOfPokemon = 10
+import { fetchPokemonPending, fetchPokemonSuccess } from "./action";
+const numberOfPokemon = 300;
 
 const urls = []
 
@@ -11,7 +11,7 @@ const requests = urls.map(url => fetch(url))
 
 export default () => {
     return dispatch => {
-
+        dispatch(fetchPokemonPending())
         Promise.all(requests)
             .then(responses => Promise.all(responses.map(res => res.json())))
             .then(pokemons => pokemons.map(pokemon => ({
