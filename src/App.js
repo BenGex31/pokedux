@@ -2,40 +2,43 @@ import React, { useEffect } from "react";
 import "./styles.css";
 import { connect } from "react-redux";
 
-import { CLICK } from "./store/action";
+import { CLICK, showPokemonAction, SHOW_POKEMON } from "./store/action";
 import fetchPokemons from './store/fetchPokemon'
 
 import GameBoy from "./components/GameBoy";
 import PokeList from "./components/PokeList";
+import Loader from "./components/Loader";
 
-const App = ({ handleClick, fetchPokemons, pending }) => {
+const App = ({ handleClick, fetchPokemons, pending, showPokemon, pokemons }) => {
   useEffect(() => {
     fetchPokemons()
   }, [fetchPokemons])
 
   if (pending) {
-    return <p>Chargement...</p>
+    return <Loader/>
   }
 
   return (
     <div className="App">
       <button onClick={() => handleClick()}>click</button>
-      <GameBoy />
+      <GameBoy showPokemon={() => showPokemon(pokemons)} />
       <PokeList />
     </div>
   );
 };
 
-const mapStateToProps = ({ pending }) => {
+const mapStateToProps = ({ pending, pokemons }) => {
   return {
-    pending
+    pending,
+    pokemons
   }
 }
 
 const mapDispatchToProps = dispatch => {
   return {
     fetchPokemons: () => dispatch(fetchPokemons()),
-    handleClick: () => dispatch({ type: CLICK })
+    handleClick: () => dispatch({ type: CLICK }),
+    showPokemon: pokemons => dispatch(showPokemonAction(pokemons))
   }
 }
 
